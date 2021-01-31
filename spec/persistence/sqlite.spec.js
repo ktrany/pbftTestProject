@@ -62,3 +62,7 @@ test('it can get a single item', async () => {
     const item = await db.getItem(ITEM.id);
     expect(item).toEqual(ITEM);
 });
+
+test('failing test', async () => {
+    expect(true).toEqual(false);
+});
