@@ -1,10 +1,10 @@
-FROM node:12-alpine
-WORKDIR /app
-COPY . .
-# new stuff here
-# ...
+FROM node:12
+RUN apt-get update && apt-get install -y git
+RUN git clone https://github.com/ktrany/pbftTestProject.git
 
-# RUN yarn install --production
-RUN yarn install
+RUN cd pbftTestProject && \
+    git checkout $git_branch && \
+    git pull && \
+    yarn install
+WORKDIR /pbftTestProject
 CMD ["npm", "test"]
-# CMD ["node", "src/index.js"]
